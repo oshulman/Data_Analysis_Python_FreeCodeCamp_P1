@@ -13,14 +13,15 @@ def calculate(lst):
   # dict created
   calc_dict = {}
 
-  # declares lists
-  mean_list = []
-  var_list = []
-  stdev_list = []
-  max_list = []
-  min_list = []
-  sum_list = []
+  # declares and initializes lists
+  mean_list = [list(arr.mean(axis=0)), list(arr.mean(axis=1)), flat.mean()]
+  var_list = [list(arr.var(axis=0)), list(arr.var(axis=1)), flat.var()]
+  stdev_list = [list(arr.std(axis=0)), list(arr.std(axis=1)), flat.std()]
+  max_list = [list(arr.max(axis=0)), list(arr.max(axis=1)), flat.max()]
+  min_list = [list(arr.min(axis=0)), list(arr.min(axis=1)), flat.min()]
+  sum_list = [list(arr.sum(axis=0)), list(arr.sum(axis=1)), flat.sum()]
 
+  """
   # declares lists
   # mean axes 1 and 2
   ma1 = []
@@ -44,6 +45,7 @@ def calculate(lst):
   # iterates through elements of array to initialize above lists
   for i in range(3):
     ma1.append(np.mean(arr[:, i]))
+    #ma1.append(arr.mean(axis=0))
     ma2.append(np.mean(arr[i, :]))
     va1.append(np.var(arr[:, i]))
     va2.append(np.var(arr[i, :]))
@@ -63,6 +65,7 @@ def calculate(lst):
   max_list.extend([max1, max2, np.max(flat)])
   min_list.extend([min1, min2, np.min(flat)])
   sum_list.extend([sum1, sum2, np.sum(flat)])
+  """
 
   # sets up dict
   calc_dict['mean'] = mean_list
@@ -72,4 +75,5 @@ def calculate(lst):
   calc_dict['min'] = min_list
   calc_dict['sum'] = sum_list
 
+  #print(arr.mean(axis=0))
   return calc_dict
